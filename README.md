@@ -15,7 +15,6 @@
   <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension"></a>
 </p>
 # Java Pipe
-**Extending Java with Functional Pipe Operators — Clean, linear, readable pipelines for modern Java.**
 
 <p align="left">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
