@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    mainClass = 'com.example.App'
+}
+
+def javapipeJar = file("${rootDir}/../../bin/javapipec.jar")
+def generatedSourcesDir = layout.buildDirectory.dir("generated/sources/javapipe/java/main")
+
+// 1. Task to preprocess Java Pipe sources before compilation
+tasks.register('preprocessJavaPipe', JavaExec) {
+    description = 'Transpiles Java Pipe (|>) files into standard Java source files'
+    group = 'build'
+
+    classpath = files(javapipeJar)
+    mainClass = 'org.javapipe.cli.JavaPipeCLI'
+
+    args = [
+        '--preprocess',
+        '--source', file('src/main/java').absolutePath,
+        '--target', generatedSourcesDir.get().asFile.absolutePath,
+        '--copy-all'
+    ]
+
+    inputs.dir('src/main/java')
+    outputs.dir(generatedSourcesDir)
+}
+
+// 2. Configure source sets to compile from the generated sources directory
+sourceSets {
+    main {
+        java {
+            srcDirs = [generatedSourcesDir]
+        }
+    }
+}
+
+// 3. Make compileJava depend on the preprocessor
+compileJava.dependsOn preprocessJavaPipe

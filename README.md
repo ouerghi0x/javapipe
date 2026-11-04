@@ -189,6 +189,62 @@ bin\javapipec.bat -d out examples\01_BasicPipe.javap
 
 ---
 
+## 📦 Using in Maven & Gradle Projects
+
+You can use the pipe operator (`|>`) directly inside ordinary `.java` files in any standard **Maven** or **Gradle** project.
+
+Working samples are provided in [`examples/maven-sample/`](examples/maven-sample) and [`examples/gradle-sample/`](examples/gradle-sample).
+
+### Gradle Integration (`build.gradle`)
+
+```groovy
+def javapipeJar = file("path/to/javapipec.jar")
+def generatedSources = layout.buildDirectory.dir("generated/sources/javapipe/java/main")
+
+tasks.register('preprocessJavaPipe', JavaExec) {
+    classpath = files(javapipeJar)
+    mainClass = 'org.javapipe.cli.JavaPipeCLI'
+    args = ['--preprocess', '--source', file('src/main/java').absolutePath, '--target', generatedSources.get().asFile.absolutePath, '--copy-all']
+    inputs.dir('src/main/java')
+    outputs.dir(generatedSources)
+}
+
+sourceSets.main.java.srcDirs = [generatedSources]
+compileJava.dependsOn preprocessJavaPipe
+```
+
+### Maven Integration (`pom.xml`)
+
+```xml
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.1.0</version>
+    <executions>
+        <execution>
+            <id>preprocess-javapipe</id>
+            <phase>generate-sources</phase>
+            <goals><goal>exec</goal></goals>
+            <configuration>
+                <executable>java</executable>
+                <arguments>
+                    <argument>-jar</argument>
+                    <argument>${project.basedir}/lib/javapipec.jar</argument>
+                    <argument>--preprocess</argument>
+                    <argument>--source</argument>
+                    <argument>${project.basedir}/src/main/java</argument>
+                    <argument>--target</argument>
+                    <argument>${project.build.directory}/generated-sources/javapipe</argument>
+                    <argument>--copy-all</argument>
+                </arguments>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+---
+
 ## Visual Studio Code Extension
 
 The project includes a complete VS Code extension in [`vscode-extension/`](vscode-extension):

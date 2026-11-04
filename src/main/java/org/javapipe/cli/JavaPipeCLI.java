@@ -54,6 +54,13 @@ public class JavaPipeCLI {
                     System.out.println("Java Pipe Compiler (javapipec) version " + VERSION);
                     return 0;
                 }
+                case "--preprocess", "--batch" -> {
+                    // Forward remaining arguments to BatchPreprocessor
+                    String[] subArgs = new String[args.length - i - 1];
+                    System.arraycopy(args, i + 1, subArgs, 0, subArgs.length);
+                    org.javapipe.tooling.BatchPreprocessor.main(subArgs);
+                    return 0;
+                }
                 case "--run", "-r" -> runMode = true;
                 case "--transpile", "-E" -> transpileMode = true;
                 case "--verbose" -> verbose = true;
@@ -170,6 +177,7 @@ public class JavaPipeCLI {
             Options:
               -r, --run <file> [args...]   Compile and run the main method of the specified file
               -E, --transpile <file>       Print generated standard Java source code to stdout
+              --preprocess -s <in> -t <out> Batch transpile source directory tree (for Maven/Gradle)
               -d <directory>               Specify output directory for compiled .class files
               --emit-java [directory]      Write generated .java files to the specified directory
               --verbose                    Enable verbose compiler output
