@@ -4,6 +4,8 @@ target/
 build/
 *.class
 bin/*.jar
+.gradle/
+**/.gradle/
 
 # Temporary test directories & logs
 javapipe_test_*/
