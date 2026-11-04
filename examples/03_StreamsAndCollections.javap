@@ -1,0 +1,28 @@
+import java.util.List;
+
+public class StreamsAndCollectionsExample {
+    public record User(String name, int score, boolean active) {}
+
+    public static void main(String[] args) {
+        System.out.println("--- Java Pipe: Collections & Streams ---");
+
+        var users = List.of(
+            new User("Alice", 95, true),
+            new User("Bob", 60, false),
+            new User("Charlie", 88, true),
+            new User("Diana", 92, true),
+            new User("Evan", 45, false)
+        );
+
+        // Example from README Section 3:
+        var topActiveUsers = users
+            |> stream()
+            |> filter(user -> user.active() && user.score() >= 80)
+            |> map(User::name)
+            |> sorted()
+            |> toList();
+
+        System.out.println("Top active users (piped stream): " + topActiveUsers);
+    }
+}
+

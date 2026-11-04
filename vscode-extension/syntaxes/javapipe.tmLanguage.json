@@ -1,0 +1,187 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Java Pipe",
+  "scopeName": "source.javapipe",
+  "patterns": [
+    { "include": "#pipe-operator" },
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#annotations" },
+    { "include": "#keywords" },
+    { "include": "#types" },
+    { "include": "#operators" },
+    { "include": "#numbers" },
+    { "include": "#method-calls" }
+  ],
+  "repository": {
+    "pipe-operator": {
+      "patterns": [
+        {
+          "name": "keyword.operator.flow.pipe.java",
+          "match": "\\|>"
+        },
+        {
+          "name": "keyword.operator.arrow.java",
+          "match": "->"
+        },
+        {
+          "name": "keyword.operator.dereference.java",
+          "match": "::"
+        },
+        {
+          "name": "variable.language.placeholder.java",
+          "match": "\\b_\\b"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.java",
+          "begin": "//",
+          "end": "$"
+        },
+        {
+          "name": "comment.block.java",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.triple.java",
+          "begin": "\"\"\"",
+          "end": "\"\"\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.java",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.java",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.java",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.java",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.java",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "annotations": {
+      "name": "storage.type.annotation.java",
+      "match": "@[A-Za-z_][A-Za-z0-9_]*"
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.java",
+          "match": "\\b(if|else|while|for|do|switch|case|default|break|continue|return|yield|throw|try|catch|finally|synchronized)\\b"
+        },
+        {
+          "name": "storage.modifier.java",
+          "match": "\\b(public|protected|private|static|final|abstract|native|transient|volatile|sealed|non-sealed|permits)\\b"
+        },
+        {
+          "name": "storage.type.declaration.java",
+          "match": "\\b(class|interface|enum|record)\\b"
+        },
+        {
+          "name": "keyword.other.java",
+          "match": "\\b(package|import|extends|implements|throws|instanceof|new|this|super)\\b"
+        },
+        {
+          "name": "constant.language.java",
+          "match": "\\b(true|false|null)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.primitive.java",
+          "match": "\\b(void|boolean|byte|short|int|long|float|double|char|var)\\b"
+        },
+        {
+          "name": "support.class.java",
+          "match": "\\b[A-Z][A-Za-z0-9_]*\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.logical.java",
+          "match": "(&&|\\|\\||!)"
+        },
+        {
+          "name": "keyword.operator.comparison.java",
+          "match": "(==|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.java",
+          "match": "(\\+\\+|--|\\+|-|\\*|/|%)"
+        },
+        {
+          "name": "keyword.operator.bitwise.java",
+          "match": "(&|\\^|\\||~|<<|>>>|>>)"
+        },
+        {
+          "name": "keyword.operator.assignment.java",
+          "match": "(=|\\+=|-=|\\*=|/=|%=|&=|\\^=|\\|=|<<=|>>=|>>>=)"
+        },
+        {
+          "name": "keyword.operator.ternary.java",
+          "match": "(\\?|:)"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.java",
+          "match": "\\b0[xX][0-9a-fA-F_]+[lL]?\\b"
+        },
+        {
+          "name": "constant.numeric.binary.java",
+          "match": "\\b0[bB][01_]+[lL]?\\b"
+        },
+        {
+          "name": "constant.numeric.float.java",
+          "match": "\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?[fFdD]?\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.java",
+          "match": "\\b[0-9][0-9_]*[lL]?\\b"
+        }
+      ]
+    },
+    "method-calls": {
+      "patterns": [
+        {
+          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+          "captures": {
+            "1": { "name": "entity.name.function.java" }
+          }
+        }
+      ]
+    }
+  }
+}

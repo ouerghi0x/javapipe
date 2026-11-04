@@ -1,0 +1,21 @@
+public class MethodReferencesExample {
+    public static void main(String[] args) {
+        System.out.println("--- Java Pipe: Method References ---");
+
+        // Example from README Section 1:
+        var result = "   hello modern java with pipes!   "
+            |> String::trim
+            |> String::toUpperCase;
+
+        System.out.println("Original: '   hello modern java with pipes!   '");
+        System.out.println("Piped:    '" + result + "'");
+
+        // Example from README Section 2 (receiver method calls):
+        var sub = "hello"
+            |> replace("h", "H")
+            |> substring(0, 3);
+
+        System.out.println("hello |> replace('h', 'H') |> substring(0, 3) = " + sub);
+    }
+}
+

@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        java-version: ['17', '21']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.java-version }}
+
+      - name: Build Java Pipe Compiler (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          powershell -ExecutionPolicy Bypass -File .\build.ps1
+
+      - name: Build & Test (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          mkdir -p out bin
+          find src/main/java -name "*.java" > sources.txt
+          javac -d out @sources.txt
+          find src/test/java -name "*.java" > test_sources.txt
+          javac -cp out -d out @test_sources.txt
+          jar cfe bin/javapipec.jar org.javapipe.cli.JavaPipeCLI -C out .
+          java -cp out org.javapipe.TestRunner
+
+      - name: Run Demonstration Examples (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          java -jar bin/javapipec.jar --run examples/01_BasicPipe.javap
+          java -jar bin/javapipec.jar --run examples/02_MethodReferences.javap
+          java -jar bin/javapipec.jar --run examples/03_StreamsAndCollections.javap
+          java -jar bin/javapipec.jar --run examples/04_StaticMethods.javap
+          java -jar bin/javapipec.jar --run examples/05_FullPipeline.javap
+
+      - name: Run Demonstration Examples (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          java -jar bin/javapipec.jar --run examples/01_BasicPipe.javap
+          java -jar bin/javapipec.jar --run examples/02_MethodReferences.javap
+          java -jar bin/javapipec.jar --run examples/03_StreamsAndCollections.javap
+          java -jar bin/javapipec.jar --run examples/04_StaticMethods.javap
+          java -jar bin/javapipec.jar --run examples/05_FullPipeline.javap

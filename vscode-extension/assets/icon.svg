@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
+  <defs>
+    <linearGradient id="iconBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19" />
+      <stop offset="100%" stop-color="#1E1B4B" />
+    </linearGradient>
+
+    <linearGradient id="iconPipe" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+
+    <linearGradient id="iconSteam" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#EF4444" />
+    </linearGradient>
+
+    <filter id="iconGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="256" height="256" rx="56" fill="url(#iconBg)" />
+
+  <!-- Java Steam -->
+  <path d="M 100 68 C 90 48, 110 32, 100 16" fill="none" stroke="url(#iconSteam)" stroke-width="5" stroke-linecap="round" />
+  <path d="M 126 64 C 116 42, 138 28, 126 12" fill="none" stroke="url(#iconSteam)" stroke-width="6" stroke-linecap="round" />
+  <path d="M 152 68 C 142 48, 162 32, 152 18" fill="none" stroke="url(#iconSteam)" stroke-width="5" stroke-linecap="round" />
+
+  <!-- Cup Silhouette -->
+  <path d="M 64 80 L 192 80 C 192 144, 164 184, 128 184 C 92 184, 64 144, 64 80 Z" fill="#1E293B" stroke="#334155" stroke-width="4" stroke-linejoin="round" />
+  <path d="M 186 92 C 224 92, 224 140, 180 144" fill="none" stroke="#334155" stroke-width="5" stroke-linecap="round" />
+  <path d="M 88 198 L 168 198" stroke="#334155" stroke-width="4" stroke-linecap="round" />
+
+  <!-- The Forward Pipe: |> -->
+  <g filter="url(#iconGlow)">
+    <rect x="94" y="100" width="14" height="66" rx="7" fill="url(#iconPipe)" />
+    <path d="M 128 102 L 168 133 L 128 164" fill="none" stroke="url(#iconPipe)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

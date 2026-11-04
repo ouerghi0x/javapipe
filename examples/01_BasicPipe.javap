@@ -1,0 +1,23 @@
+public class BasicPipeExample {
+    public static void main(String[] args) {
+        System.out.println("--- Java Pipe: Lambda Pipelines ---");
+
+        // Example from README Section 7 (POC test case):
+        var result1 = 10
+            |> x -> x * 2
+            |> x -> x + 5;
+        System.out.println("10 |> x -> x * 2 |> x -> x + 5 = " + result1 + " (Expected: 25)");
+
+        // Example from README Section 1:
+        var result2 = 5
+            |> value -> value * 2
+            |> value -> value + 10;
+        System.out.println("5 |> value -> value * 2 |> value -> value + 10 = " + result2 + " (Expected: 20)");
+
+        // Arithmetic precedence:
+        var result3 = 100 + 50
+            |> v -> v / 3
+            |> v -> v * 4;
+        System.out.println("(100 + 50) |> /3 |> *4 = " + result3 + " (Expected: 200)");
+    }
+}

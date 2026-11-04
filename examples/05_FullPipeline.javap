@@ -1,0 +1,52 @@
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class FullPipelineExample {
+    public record Transaction(String id, String category, double amount) {}
+
+    public static void main(String[] args) {
+        System.out.println("==================================================");
+        System.out.println("Java Pipe: Full Pipeline Showcase");
+        System.out.println("==================================================");
+
+        var transactions = List.of(
+            new Transaction("TX101", "GROCERIES", 54.20),
+            new Transaction("TX102", "TECH", 899.99),
+            new Transaction("TX103", "GROCERIES", 32.50),
+            new Transaction("TX104", "BOOKS", 45.00),
+            new Transaction("TX105", "TECH", 120.00)
+        );
+
+        // Pipe 1: Calculate total spent on TECH
+        var techTotal = transactions
+            |> stream()
+            |> filter(t -> "TECH".equals(t.category()))
+            |> mapToDouble(Transaction::amount)
+            |> sum();
+
+        System.out.println("Total Tech Spend: $" + techTotal);
+
+        // Pipe 2: Extract uppercase categories
+        var categories = transactions
+            |> stream()
+            |> map(Transaction::category)
+            |> distinct()
+            |> sorted()
+            |> toList();
+
+        System.out.println("Distinct Categories: " + categories);
+
+        // Pipe 3: Complex string & math pipeline
+        var scoreSummary = "  Score: -1280 points  "
+            |> String::trim
+            |> str -> str.replace("Score: ", "")
+            |> str -> str.replace(" points", "")
+            |> Integer::parseInt
+            |> Math::abs
+            |> score -> "Final Absolute Score: " + score;
+
+        System.out.println(scoreSummary);
+        System.out.println("==================================================");
+    }
+}
+

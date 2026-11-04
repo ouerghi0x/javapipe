@@ -1,0 +1,28 @@
+# Compiled bytecode & build output
+out/
+target/
+build/
+*.class
+bin/*.jar
+
+# Temporary test directories & logs
+javapipe_test_*/
+*.log
+*.tmp
+
+# VS Code extension package & dependencies
+vscode-extension/*.vsix
+vscode-extension/node_modules/
+.vscode-test/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE configuration files
+.idea/
+*.iml
+.settings/
+.project
+.classpath

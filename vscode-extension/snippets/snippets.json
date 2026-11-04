@@ -1,0 +1,50 @@
+{
+  "Java Pipe Main Class": {
+    "prefix": "jp-main",
+    "body": [
+      "public class ${1:Main} {",
+      "    public static void main(String[] args) {",
+      "        var result = ${2:input}",
+      "            |> ${3:step1}",
+      "            |> ${4:step2};",
+      "        ",
+      "        System.out.println(result);",
+      "    }",
+      "}"
+    ],
+    "description": "Scaffold a new Java Pipe main class"
+  },
+  "Stream Pipe Pipeline": {
+    "prefix": "jp-stream",
+    "body": [
+      "var ${1:result} = ${2:collection}",
+      "    |> stream()",
+      "    |> filter(${3:item} -> ${4:${3:item}.isValid()})",
+      "    |> map(${5:Item::getName})",
+      "    |> sorted()",
+      "    |> toList();"
+    ],
+    "description": "Chained stream pipeline using |> operator"
+  },
+  "Pipe Lambda Step": {
+    "prefix": "jp-lambda",
+    "body": [
+      "|> ${1:x} -> ${2:${1:x} * 2}"
+    ],
+    "description": "Insert a pipe step with a lambda function"
+  },
+  "Pipe Method Reference Step": {
+    "prefix": "jp-ref",
+    "body": [
+      "|> ${1:String}::${2:trim}"
+    ],
+    "description": "Insert a pipe step with a method reference"
+  },
+  "Pipe Method Call Step": {
+    "prefix": "jp-call",
+    "body": [
+      "|> ${1:method}(${2})"
+    ],
+    "description": "Insert a pipe step with an instance or static method call"
+  }
+}

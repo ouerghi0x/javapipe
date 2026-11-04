@@ -1,0 +1,17 @@
+public class StaticMethodsExample {
+    public static void main(String[] args) {
+        System.out.println("--- Java Pipe: Static Methods ---");
+
+        var input = " -987 ";
+
+        // Static method references from README Section 4:
+        var result = input
+            |> String::trim
+            |> Integer::parseInt
+            |> Math::abs;
+
+        System.out.println("Input: '" + input + "'");
+        System.out.println("Result: " + result + " (Expected: 987)");
+    }
+}
+

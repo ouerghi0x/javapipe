@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="main" x1="100" y1="80" x2="420" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00D4FF" />
+      <stop offset=".45" stop-color="#155EEF" />
+      <stop offset="1" stop-color="#6200EE" />
+    </linearGradient>
+
+    <linearGradient id="inner" x1="145" y1="180" x2="350" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00E5FF" />
+      <stop offset=".55" stop-color="#087BFF" />
+      <stop offset="1" stop-color="#4530FF" />
+    </linearGradient>
+
+    <linearGradient id="shadow" x1="150" y1="150" x2="310" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0038C8" />
+      <stop offset="1" stop-color="#3200A8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main flowing ribbon -->
+  <path
+    d="M155 78
+       H293
+       C382 78 444 137 444 218
+       C444 299 382 354 293 354
+       H185
+       C151 354 130 377 130 410
+       V456
+       C130 469 143 477 155 469
+       L236 418
+       V410
+       C236 389 251 378 273 378
+       H293
+       C403 378 480 309 480 218
+       C480 127 403 48 293 48
+       H155
+       C115 48 91 73 91 108
+       V145
+       C91 169 109 185 133 185
+       H220
+       L155 145
+       C143 137 130 127 130 108
+       C130 90 139 78 155 78Z"
+    fill="url(#main)"
+  />
+
+  <!-- Lower ribbon fold -->
+  <path
+    d="M91 108
+       V145
+       C91 169 109 185 133 185
+       H220
+       L155 145
+       C143 137 130 127 130 108
+       C130 90 139 78 155 78
+       H293
+       C382 78 444 137 444 218
+       C444 267 416 304 376 325
+       C344 342 308 354 273 354
+       H185
+       C151 354 130 377 130 410
+       V456
+       L236 390
+       V378
+       H293
+       C403 378 480 309 480 218"
+    fill="url(#shadow)"
+    opacity=".35"
+  />
+
+  <!-- Forward pipe arrow -->
+  <path
+    d="M166 185
+       H260
+       C267 185 274 188 280 193
+       L361 259
+       C370 266 370 279 361 286
+       L280 352
+       C274 357 267 360 260 360
+       H166
+       L255 273
+       L166 185Z"
+    fill="url(#inner)"
+  />
+</svg>

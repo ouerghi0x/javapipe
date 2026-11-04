@@ -1,0 +1,91 @@
+{
+  "name": "javapipe",
+  "displayName": "Java Pipe",
+  "description": "Functional Pipe Forward Operator (|>) Language Support for Java",
+  "version": "0.1.0",
+  "publisher": "javapipe",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "java",
+    "pipe",
+    "pipeline",
+    "functional",
+    "elixir",
+    "operator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/javapipe/javapipe"
+  },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:javapipe",
+    "workspaceContains:**/*.javap",
+    "workspaceContains:**/*.jpipe"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "javapipe",
+        "aliases": ["Java Pipe", "javapipe"],
+        "extensions": [".javap", ".jpipe"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./assets/file-icon.svg",
+          "dark": "./assets/file-icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "javapipe",
+        "scopeName": "source.javapipe",
+        "path": "./syntaxes/javapipe.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "javapipe",
+        "path": "./snippets/snippets.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "javapipe.runFile",
+        "title": "Java Pipe: Run Current File",
+        "icon": "$(play)"
+      },
+      {
+        "command": "javapipe.transpile",
+        "title": "Java Pipe: View Transpiled Java",
+        "icon": "$(split-horizontal)"
+      },
+      {
+        "command": "javapipe.compile",
+        "title": "Java Pipe: Compile to Bytecode",
+        "icon": "$(gear)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "javapipe.runFile",
+          "when": "editorLangId == javapipe",
+          "group": "navigation@1"
+        },
+        {
+          "command": "javapipe.transpile",
+          "when": "editorLangId == javapipe",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  }
+}
