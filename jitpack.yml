@@ -6,3 +6,4 @@ before_install:
 
 install:
   - mvn clean install -DskipTests
+

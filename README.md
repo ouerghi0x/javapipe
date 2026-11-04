@@ -188,7 +188,10 @@ You can use the pipe operator (`|>`) directly inside ordinary `.java` files in a
 > **No local JAR needed!** You can consume Java Pipe directly as an automated dependency via **JitPack**.  
 > _(Official Maven Central publishing under `io.github.ouerghi0x:javapipe` is currently in process)._
 
-Working samples are provided in [`examples/maven-sample/`](examples/maven-sample) and [`examples/gradle-sample/`](examples/gradle-sample).
+Working samples are provided in:
+- [`examples/springboot-sample/`](examples/springboot-sample): Full Spring Boot 3 REST API using `|>`.
+- [`examples/maven-sample/`](examples/maven-sample): Standard Apache Maven integration.
+- [`examples/gradle-sample/`](examples/gradle-sample): Standard Gradle integration.
 
 ---
 

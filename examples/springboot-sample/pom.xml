@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.example</groupId>
+    <artifactId>springboot-javapipe-sample</artifactId>
+    <version>1.0.0</version>
+    <name>Spring Boot with Java Pipe Demo</name>
+    <description>Demo Spring Boot 3 application using the Java Pipe (|>) operator</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <javapipe.jar>${project.basedir}/../../bin/javapipec.jar</javapipe.jar>
+    </properties>
+
+    <!-- JitPack Repository for downloading javapipe remotely -->
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- Spring Boot Web Starter (REST controllers, embedded Tomcat) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Java Pipe Dependency from JitPack -->
+        <dependency>
+            <groupId>com.github.ouerghi0x</groupId>
+            <artifactId>javapipe</artifactId>
+            <version>main-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Spring Boot Test Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- The compiler will compile the transpiled Java code in generated-sources -->
+        <sourceDirectory>${project.build.directory}/generated-sources/javapipe</sourceDirectory>
+
+        <plugins>
+            <!-- 1. Preprocess Java Pipe sources (|>) into standard Java before javac runs -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>preprocess-javapipe</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-jar</argument>
+                                <argument>${javapipe.jar}</argument>
+                                <argument>--preprocess</argument>
+                                <argument>--source</argument>
+                                <argument>${project.basedir}/src/main/java</argument>
+                                <argument>--target</argument>
+                                <argument>${project.build.directory}/generated-sources/javapipe</argument>
+                                <argument>--copy-all</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- 2. Standard Spring Boot Maven Plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+

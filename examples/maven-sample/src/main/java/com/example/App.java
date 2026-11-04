@@ -10,11 +10,11 @@ public class App {
         var rawInput = "   42, 18, -99, 105, -7   ";
 
         var processedNumbers = List.of(rawInput.trim().split(",\\s*"))
-            |> stream()
-            |> map(Integer::parseInt)
-            |> filter(n -> n > 0)
-            |> sorted()
-            |> toList();
+                |> stream()
+                |> map(Integer::parseInt)
+                |> filter(n -> n > 0)
+                |> sorted()
+                |> toList();
 
         System.out.println("Input: " + rawInput);
         System.out.println("Positive Sorted Numbers: " + processedNumbers);
@@ -27,4 +27,3 @@ public class App {
         System.out.println(message);
     }
 }
-
