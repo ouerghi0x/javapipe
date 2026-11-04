@@ -15,9 +15,20 @@
         <javapipe.jar>${project.basedir}/../../bin/javapipec.jar</javapipe.jar>
     </properties>
 
+    <!-- JitPack repository to download Java Pipe dependency automatically -->
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <build>
+        <!-- The compiler will compile the transpiled Java code in generated-sources -->
+        <sourceDirectory>${project.build.directory}/generated-sources/javapipe</sourceDirectory>
+
         <plugins>
-            <!-- 1. Preprocess Java Pipe sources before javac runs -->
+            <!-- 1. Preprocess Java Pipe sources (|>) into standard Java before javac runs -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -46,44 +57,17 @@
                 </executions>
             </plugin>
 
-            <!-- 2. Add generated standard Java sources to compilation classpath -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.4.0</version>
-                <executions>
-                    <execution>
-                        <id>add-javapipe-sources</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>${project.build.directory}/generated-sources/javapipe</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- 3. Standard Maven Compiler compiles generated Java sources -->
+            <!-- 2. Standard Maven Compiler plugin compiling the preprocessed standard Java -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <!-- Exclude original sources containing |> since generated-sources has standard Java -->
-                    <excludes>
-                        <exclude>**/*</exclude>
-                    </excludes>
-                    <compilePath>
-                        <path>${project.build.directory}/generated-sources/javapipe</path>
-                    </compilePath>
+                    <release>17</release>
                 </configuration>
             </plugin>
 
-            <!-- 4. Exec plugin to run the application -->
+            <!-- 3. Exec plugin to run the application -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -95,4 +79,3 @@
         </plugins>
     </build>
 </project>
-

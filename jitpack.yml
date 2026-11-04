@@ -1,0 +1,8 @@
+jdk:
+  - openjdk17
+
+before_install:
+  - java -version
+
+install:
+  - mvn clean install -DskipTests
