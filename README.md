@@ -8,18 +8,11 @@
   <strong>Extending Java with Functional Pipe Operators — Clean, linear, readable pipelines for modern Java.</strong>
 </p>
 
-<p align="left">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
-  <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?logo=openjdk&logoColor=white" alt="Java 17+"></a>
-  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build: Passing"></a>
-  <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension"></a>
-</p>
-# Java Pipe
-**Extending Java with Functional Pipe Operators — Clean, linear, readable pipelines for modern Java.**
-
-<p align="left">
+<p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?logo=openjdk&logoColor=white" alt="Java 17+">
+  <a href="https://jitpack.io/#ouerghi0x/javapipe"><img src="https://jitpack.io/v/ouerghi0x/javapipe.svg" alt="JitPack"></a>
+  <img src="https://img.shields.io/badge/Maven%20Central-in%20process-orange" alt="Maven Central: in process">
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build: Passing">
   <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension">
 </p>
@@ -193,16 +186,67 @@ bin\javapipec.bat -d out examples\01_BasicPipe.javap
 
 You can use the pipe operator (`|>`) directly inside ordinary `.java` files in any standard **Maven** or **Gradle** project.
 
+> [!TIP]
+> **No local JAR needed!** You can consume Java Pipe directly as an automated dependency via **JitPack**.  
+> *(Official Maven Central publishing under `io.github.ouerghi0x:javapipe` is currently in process).*
+
 Working samples are provided in [`examples/maven-sample/`](examples/maven-sample) and [`examples/gradle-sample/`](examples/gradle-sample).
 
-### Gradle Integration (`build.gradle`)
+---
+
+### Dependency Setup via JitPack
+
+#### Maven (`pom.xml`)
+Add the JitPack repository and dependency:
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>com.github.ouerghi0x</groupId>
+        <artifactId>javapipe</artifactId>
+        <version>v0.1.0</version>
+    </dependency>
+</dependencies>
+```
+
+#### Gradle (`build.gradle`)
+```groovy
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.ouerghi0x:javapipe:v0.1.0'
+}
+```
+
+---
+
+### Build Automation Setup
+
+#### Gradle Integration (`build.gradle`)
 
 ```groovy
-def javapipeJar = file("path/to/javapipec.jar")
+configurations {
+    javapipe
+}
+
+dependencies {
+    javapipe 'com.github.ouerghi0x:javapipe:v0.1.0'
+}
+
 def generatedSources = layout.buildDirectory.dir("generated/sources/javapipe/java/main")
 
 tasks.register('preprocessJavaPipe', JavaExec) {
-    classpath = files(javapipeJar)
+    classpath = configurations.javapipe
     mainClass = 'org.javapipe.cli.JavaPipeCLI'
     args = ['--preprocess', '--source', file('src/main/java').absolutePath, '--target', generatedSources.get().asFile.absolutePath, '--copy-all']
     inputs.dir('src/main/java')
@@ -213,7 +257,7 @@ sourceSets.main.java.srcDirs = [generatedSources]
 compileJava.dependsOn preprocessJavaPipe
 ```
 
-### Maven Integration (`pom.xml`)
+#### Maven Integration (`pom.xml`)
 
 ```xml
 <plugin>
@@ -224,12 +268,10 @@ compileJava.dependsOn preprocessJavaPipe
         <execution>
             <id>preprocess-javapipe</id>
             <phase>generate-sources</phase>
-            <goals><goal>exec</goal></goals>
+            <goals><goal>java</goal></goals>
             <configuration>
-                <executable>java</executable>
+                <mainClass>org.javapipe.cli.JavaPipeCLI</mainClass>
                 <arguments>
-                    <argument>-jar</argument>
-                    <argument>${project.basedir}/lib/javapipec.jar</argument>
                     <argument>--preprocess</argument>
                     <argument>--source</argument>
                     <argument>${project.basedir}/src/main/java</argument>
@@ -237,9 +279,17 @@ compileJava.dependsOn preprocessJavaPipe
                     <argument>${project.build.directory}/generated-sources/javapipe</argument>
                     <argument>--copy-all</argument>
                 </arguments>
+                <includePluginDependencies>true</includePluginDependencies>
             </configuration>
         </execution>
     </executions>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.ouerghi0x</groupId>
+            <artifactId>javapipe</artifactId>
+            <version>v0.1.0</version>
+        </dependency>
+    </dependencies>
 </plugin>
 ```
 
