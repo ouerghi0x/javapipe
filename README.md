@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" width="220" alt="Java Pipe Logo" />
+  <img src="assets/file-icon.svg" width="220" alt="Java Pipe Logo" />
 </p>
 
 <h1 align="center">Java Pipe (<code>|&gt;</code>)</h1>
@@ -22,9 +22,11 @@
 **Java Pipe** brings the beloved functional pipe operator (`|>`) from languages like Elixir, F#, and OCaml into the Java ecosystem.
 
 Instead of writing deeply nested method calls like:
+
 ```java
 var result = Math.abs(Integer.parseInt(String.valueOf(input).trim()));
 ```
+
 Or cluttering your methods with dozens of single-use intermediate variables, **Java Pipe** lets you express data transformations as clean, left-to-right pipelines:
 
 ```java
@@ -36,6 +38,7 @@ var result = input
 ```
 
 ### Core Design Principles
+
 - 🚀 **100% Standard Java & JVM Compatible**: Compiles to standard Java source and bytecode using OpenJDK's `javac`.
 - ⚡ **Zero Runtime Overhead**: No custom JVM, no heavy functional libraries, no performance penalty.
 - 🔒 **Full Static Type Safety**: Preserves Java's generics, type inference, lambdas, and overload resolution.
@@ -46,6 +49,7 @@ var result = input
 ## 📖 Syntax & Features
 
 ### 1. Lambdas & Function Application
+
 Pipe expressions directly into anonymous lambda functions:
 
 ```java
@@ -56,6 +60,7 @@ var result = 10
 ```
 
 ### 2. Method References (Instance & Static)
+
 Pass piped values directly to Java method references:
 
 ```java
@@ -73,6 +78,7 @@ var number = "-42"
 ```
 
 ### 3. Collections & Java Streams
+
 Chain method calls fluently without breaking syntax:
 
 ```java
@@ -85,6 +91,7 @@ var topActiveUsers = users
 ```
 
 ### 4. Method Calls with Arguments
+
 Pass values into methods as the receiver or first argument:
 
 ```java
@@ -99,6 +106,7 @@ var result = "hello"
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - **JDK 17 or higher** (`java -version` and `javac -version`).
 
 ### Building from Source
@@ -133,6 +141,7 @@ This packages the standalone compiler into `bin/javapipec.jar` and runs the auto
 ## 💻 CLI Usage (`javapipec`)
 
 ### Run a `.javap` File Directly
+
 Compiles and executes the file in one step:
 
 ```powershell
@@ -141,6 +150,7 @@ bin\javapipec.bat --run examples\05_FullPipeline.javap
 ```
 
 ### Transpile to Standard Java
+
 Inspect the clean Java code emitted by the compiler:
 
 ```powershell
@@ -148,6 +158,7 @@ bin\javapipec.bat --transpile examples\01_BasicPipe.javap
 ```
 
 Output:
+
 ```java
 public class BasicPipeExample {
     public static void main(String[] args) {
@@ -178,6 +189,7 @@ The project includes a complete VS Code extension in [`vscode-extension/`](vscod
 </p>
 
 ### Features
+
 - **Dedicated Syntax Highlighting**: Custom TextMate grammar for `|>`, `::`, `->`, and `_`.
 - **One-Click Execution**: Integrated "Play" button in the editor title bar to run `.javap` files instantly.
 - **Split-View Transpilation**: View transpiled Java side-by-side with one click.
@@ -185,11 +197,14 @@ The project includes a complete VS Code extension in [`vscode-extension/`](vscod
 - **Custom File Icon**: Transparent vector file icon for `.javap` and `.jpipe` files.
 
 ### Installing / Updating the Extension
+
 Simply run:
+
 ```batch
 update-extension.bat
 ```
-*(Or in PowerShell: `.\update-extension.ps1`)*
+
+_(Or in PowerShell: `.\update-extension.ps1`)_
 
 Then in VS Code, press **`Ctrl+Shift+P`** and run **`Developer: Reload Window`**.
 
