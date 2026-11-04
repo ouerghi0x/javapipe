@@ -21,3 +21,4 @@ public class BasicPipeExample {
         System.out.println("(100 + 50) |> /3 |> *4 = " + result3 + " (Expected: 200)");
     }
 }
+

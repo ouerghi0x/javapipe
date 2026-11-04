@@ -57,3 +57,4 @@ jobs:
           java -jar bin/javapipec.jar --run examples/03_StreamsAndCollections.javap
           java -jar bin/javapipec.jar --run examples/04_StaticMethods.javap
           java -jar bin/javapipec.jar --run examples/05_FullPipeline.javap
+

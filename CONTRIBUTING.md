@@ -76,3 +76,4 @@ bin\javapipec.bat --run examples\05_FullPipeline.javap
 - Add unit tests in `src/test/java/org/javapipe/` for any new parser or desugaring features.
 - Update documentation or examples if introducing new syntax capabilities.
 - Keep commits descriptive and atomic.
+
