@@ -1,5 +1,20 @@
-# Java Pipe (`|>`)
+<p align="center">
+  <img src="assets/file-icon.svg" width="220" alt="Java Pipe Logo" />
+</p>
 
+<h1 align="center">Java Pipe <code>|&gt;</code></h1>
+
+<p align="center">
+  <strong>Extending Java with Functional Pipe Operators — Clean, linear, readable pipelines for modern Java.</strong>
+</p>
+
+<p align="left">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?logo=openjdk&logoColor=white" alt="Java 17+"></a>
+  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build: Passing"></a>
+  <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension"></a>
+</p>
+# Java Pipe
 **Extending Java with Functional Pipe Operators — Clean, linear, readable pipelines for modern Java.**
 
 <p align="left">
