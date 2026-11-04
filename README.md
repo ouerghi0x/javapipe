@@ -16,12 +16,7 @@
 </p>
 # Java Pipe
 
-<p align="left">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
-  <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?logo=openjdk&logoColor=white" alt="Java 17+">
-  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build: Passing">
-  <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension">
-</p>
+
 
 ---
 
