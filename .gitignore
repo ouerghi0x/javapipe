@@ -9,7 +9,7 @@ bin/*.jar
 javapipe_test_*/
 *.log
 *.tmp
-
+.github/*
 # VS Code extension package & dependencies
 vscode-extension/*.vsix
 vscode-extension/node_modules/
