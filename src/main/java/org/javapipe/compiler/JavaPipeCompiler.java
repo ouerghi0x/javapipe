@@ -84,6 +84,13 @@ public class JavaPipeCompiler {
         } else {
             javaFile = outDir.resolve(outputBaseName + ".java");
         }
+
+        // Prevent overwriting source file if compiling a .java file in-place
+        if (javaFile.toAbsolutePath().normalize().equals(sourceFilePath.toAbsolutePath().normalize())) {
+            Path tempDir = Files.createTempDirectory("javapipe_cache_");
+            javaFile = tempDir.resolve(outputBaseName + ".java");
+        }
+
         Files.writeString(javaFile, javaSource);
 
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
