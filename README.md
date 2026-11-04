@@ -8,11 +8,18 @@
   <strong>Extending Java with Functional Pipe Operators — Clean, linear, readable pipelines for modern Java.</strong>
 </p>
 
-<p align="center">
+<p align="left">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?logo=openjdk&logoColor=white" alt="Java 17+"></a>
+  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build: Passing"></a>
+  <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension"></a>
+</p>
+# Java Pipe
+**Extending Java with Functional Pipe Operators — Clean, linear, readable pipelines for modern Java.**
+
+<p align="left">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?logo=openjdk&logoColor=white" alt="Java 17+">
-  <a href="https://jitpack.io/#ouerghi0x/javapipe"><img src="https://jitpack.io/v/ouerghi0x/javapipe.svg" alt="JitPack"></a>
-  <img src="https://img.shields.io/badge/Maven%20Central-in%20process-orange" alt="Maven Central: in process">
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build: Passing">
   <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension">
 </p>
@@ -188,7 +195,7 @@ You can use the pipe operator (`|>`) directly inside ordinary `.java` files in a
 
 > [!TIP]
 > **No local JAR needed!** You can consume Java Pipe directly as an automated dependency via **JitPack**.  
-> *(Official Maven Central publishing under `io.github.ouerghi0x:javapipe` is currently in process).*
+> _(Official Maven Central publishing under `io.github.ouerghi0x:javapipe` is currently in process)._
 
 Working samples are provided in [`examples/maven-sample/`](examples/maven-sample) and [`examples/gradle-sample/`](examples/gradle-sample).
 
@@ -197,6 +204,7 @@ Working samples are provided in [`examples/maven-sample/`](examples/maven-sample
 ### Dependency Setup via JitPack
 
 #### Maven (`pom.xml`)
+
 Add the JitPack repository and dependency:
 
 ```xml
@@ -217,6 +225,7 @@ Add the JitPack repository and dependency:
 ```
 
 #### Gradle (`build.gradle`)
+
 ```groovy
 repositories {
     mavenCentral()
