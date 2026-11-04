@@ -14,7 +14,6 @@
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build: Passing"></a>
   <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension"></a>
 </p>
-# Java Pipe
 
 
 
