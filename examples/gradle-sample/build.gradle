@@ -49,3 +49,4 @@ sourceSets {
 
 // 3. Make compileJava depend on the preprocessor
 compileJava.dependsOn preprocessJavaPipe
+

@@ -28,3 +28,4 @@ Output:
 Even Numbers Squared Sum: 220
 🚀 [ POWERED BY JAVA PIPE AND GRADLE ] 🚀
 ```
+
