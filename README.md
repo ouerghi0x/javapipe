@@ -1,18 +1,12 @@
-<p align="center">
-  <img src="assets/file-icon.svg" width="220" alt="Java Pipe Logo" />
-</p>
+# Java Pipe (`|>`)
 
-<h1 align="center">Java Pipe (<code>|&gt;</code>)</h1>
+**Extending Java with Functional Pipe Operators — Clean, linear, readable pipelines for modern Java.**
 
-<p align="center">
-  <strong>Extending Java with Functional Pipe Operators — Clean, linear, readable pipelines for modern Java.</strong>
-</p>
-
-<p align="center">
+<p align="left">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
-  <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?logo=openjdk&logoColor=white" alt="Java 17+"></a>
-  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build: Passing"></a>
-  <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension"></a>
+  <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?logo=openjdk&logoColor=white" alt="Java 17+">
+  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build: Passing">
+  <img src="https://img.shields.io/badge/VS%20Code-Extension%20Available-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Extension">
 </p>
 
 ---
@@ -180,13 +174,9 @@ bin\javapipec.bat -d out examples\01_BasicPipe.javap
 
 ---
 
-## 🎨 Visual Studio Code Extension
+## Visual Studio Code Extension
 
 The project includes a complete VS Code extension in [`vscode-extension/`](vscode-extension):
-
-<p align="center">
-  <img src="vscode-extension/assets/file-icon.svg" width="96" alt="Java Pipe File Icon" />
-</p>
 
 ### Features
 
